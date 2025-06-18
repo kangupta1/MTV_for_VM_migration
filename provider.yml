@@ -1,0 +1,15 @@
+- name: Create the provider
+  redhat.openshift.k8s:
+    state: present
+    definition:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      metadata:
+        name: {{ source_provider_name }}
+        namespace: aap
+      spec:
+        type: ovirt
+        url: {{url_api_enpoint }}
+        secret:
+          name: {{ secret_name }}
+          namespace: aap
